@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Book Saloon - Home</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  
+<div id="header"></div>
+<script src="header.js"></script>
+<!-- ⚠️⚠️⚠️ EVERYTHING BELOW IS YOUR ORIGINAL CODE, UNTOUCHED -->
+
+<main class="container">
+
+<section class="hero card">
+<h1 style="text-align: center;"><u>Find the best salons near you</u></h1>
+<p class="muted">Only salons created by owners appear here.</p>
+<section class="card">
+  <h2>Search Salon</h2>
+
+  <div class="search-row">
+    <input 
+      type="text" 
+      id="salonSearchBox" 
+      placeholder="Search salon by name…" 
+      class="input"
+      oninput="filterSalonSearch()"
+    >
+
+    <button id="clearSearchBtn" class="clear-btn">Clear</button>
+</div>
+
+<div class="dropdown-search-list"></div>
+
+<ul id="searchDropdown" class="search-dropdown"></ul>
+
+<div id="recentBox" class="recent-box">
+  <span class="recent-header">
+    <button id="clearRecentBtn" class="clear-btn">Clear</button>
+  </span>
+  <div id="recentList"></div>
+</div>
+
+<div id="salonSearchResults" class="search-results"></div>
+</section>
+
+<a class="btn" href="customer.html">Book Your Slot</a>
+</section>
+
+
+<section class="card">
+<h2>Salons</h2>
+<div id="salonCardsContainer" class="grid"></div>
+</section>
+
+</main>
+
+<footer class="footer">© 2025 Book Saloon</footer>
+
+
+<script>
+// Load salons
+const searchBox = document.getElementById("salonSearchBox");
+const dropdown = document.getElementById("searchDropdown");
+const clearBtn = document.getElementById("clearSearchBtn");
+
+function filterSalonSearch() {
+    const q = searchBox.value.trim().toLowerCase();
+
+    if (!q) {
+        dropdown.innerHTML = "";
+        dropdown.style.display = "none";
+        return;
+    }
+
+    const matches = salonsList.filter(s =>
+        s.name.toLowerCase().startsWith(q)
+    );
+
+    if (matches.length === 0) {
+        dropdown.innerHTML = "<div class='no-result'>No salons found</div>";
+        dropdown.style.display = "block";
+        return;
+    }
+
+    dropdown.innerHTML = matches
+      .map(s => `<div class="result-item" onclick="selectSalon('${s.id}')">${s.name}</div>`)
+      .join("");
+
+    dropdown.style.display = "block";
+}
+
+function selectSalon(id) {
+    localStorage.setItem("selected_salon", id);
+    window.location.href = "customer.html";
+}
+
+clearBtn.onclick = () => {
+    searchBox.value = "";
+    dropdown.innerHTML = "";
+    dropdown.style.display = "none";
+};
+</script>
+
+<script>
+function toggleDarkMode() {
+    const html = document.documentElement;
+    if (html.getAttribute("data-theme") === "dark") {
+        html.removeAttribute("data-theme");
+    } else {
+        html.setAttribute("data-theme", "dark");
+    }
+}
+</script>
+
+<script src="salonCards.js"></script>
+<script src="search.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>

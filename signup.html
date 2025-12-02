@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Owner Sign Up</title><link rel="stylesheet" href="style.css"></head>
+<body>
+    <div id="header"></div>
+    <script src="header.js"></script>
+<main class="container">
+<section class="card">
+<h2><u>Create New Salon Account</u></h2>
+<form id="ownerSignupForm">
+<label>Person name:<input id="ou_name" required placeholder="Your Name"></label><br>
+<label>Email Id:<input id="ou_email" required placeholder="account@gmail.com"></label><br>
+<label>Mobile No:<input 
+    type="number" id="ou_phone" required 
+    maxlength="10" 
+    pattern="\d{10}" 
+    oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10);" 
+    placeholder="e.g., 9876543210">
+</label><br>
+<label>Password:<input id="ou_pass" type="password" required placeholder="Password"></label><br>
+<div class="row"><button class="btn" type="submit">Sign Up</button><br><br><a class="btn" href="signin.html">Already have account?</a></div>
+</form>
+</section>
+</main>
+<script src="ownerAuth.js"></script>
+</body>
+</html>

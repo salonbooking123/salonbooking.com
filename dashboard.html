@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin Dashboard</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<div id="header"></div>
+<script src="header.js"></script>
+
+<h2 style="text-align:center;margin-top:20px;">Admin Dashboard</h2>
+<div class="out">
+    <a href="index.html" class="logout-btn">Log Out</a>
+</div>
+
+
+<div class="container">
+
+    <!-- SERVICES -->
+    <section class="card">
+        <h3><u>Services</u></h3>
+
+        <div class="row">
+            <input id="serviceName" placeholder="Service name">
+            <input id="servicePrice" type="number" placeholder="Price (₹)">
+            <!-- add duration for each service -->
+            <input id="serviceDuration" type="number" required placeholder="Duration (mins)">
+            <button id="addServiceBtn" class="btn">Add</button>
+        </div>
+
+        <div id="servicesList"></div>
+    </section>
+
+
+    <!-- OWNERS -->
+    <section class="card">
+        <h3><u>Salon Owners</u></h3>
+        <div id="ownersTable"></div>
+    </section>
+
+    <!-- SALONS -->
+    <section class="card">
+        <h3><u>All Salons</u></h3>
+        <div id="salonsTable"></div>
+    </section>
+
+    <!-- BOOKINGS -->
+<section class="card" id="section3">
+    <h3><u>Customer Bookings</u></h3>
+    <div id="bookingsTable"></div>
+    <div class="section-actions">
+        <!-- <button class="btn small" onclick="editSection('section3')">Edit</button>
+        <button class="btn small danger" onclick="deleteSection('section3')">Delete ALL</button> -->
+    </div>
+</section>
+
+    <!-- FULL CONTROL -->
+    <section class="card">
+        <h3><u>Full Control</u></h3>
+        <button class="btn danger" id="deleteAllSalonsBtn">Delete ALL salons</button>
+        <button class="btn danger" id="resetDBBtn">Reset entire database</button>
+    </section>
+
+</div>
+
+<script src="dashboard.js"></script>
+
+</body>
+</html>

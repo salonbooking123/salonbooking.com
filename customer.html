@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Book Appointment</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<div id="header"></div>
+<script src="header.js"></script>
+
+<h2 style="text-align:center;margin-top:20px;"><u>Book Your Appointment</u></h2>
+
+<div class="card" style="max-width:400px;margin:auto;">
+
+    <label>Your Name</label>
+    <input id="cust_name" type="text" required placeholder="Enter Name">
+
+    <label>Phone Number (optional)</label>
+    <input 
+        id="cust_phone" 
+        type="tel" 
+        maxlength="10" 
+        pattern="\d{10}" 
+        oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10);" 
+        placeholder="e.g., 9876543210"
+    />
+
+    <label>Select Salon</label>
+    <select id="cust_salon"></select>
+
+    <label>Select Services</label>
+    <select id="cust_service" multiple size="5"></select>
+    <p class="muted small">* For Multiple option: Mobile-> Long Press or Laptop-> Hold CTRL</p>
+
+    <br >
+    <button class="btn" id="bookBtn">Book Now</button>
+
+    <p id="bookMsg" class="muted small"></p>
+
+</div>
+
+<script>
+// LOAD SALONS
+
+// AUTO-SELECT salon chosen on homepage
+const preSelected = localStorage.getItem("selected_salon");
+
+// LOAD SALONS
+const salons = JSON.parse(localStorage.getItem("bs_salons_v1") || "[]");
+const salonBox = document.getElementById("cust_salon");
+
+salons.forEach(s => {
+    salonBox.innerHTML += `<option value="${s.id}">${s.name}</option>`;
+});
+
+// APPLY PRE-SELECTION (if available)
+if (preSelected) {
+    salonBox.value = preSelected;
+}
+
+
+// LOAD SERVICES
+const services = JSON.parse(localStorage.getItem("services") || "[]");
+const serviceBox = document.getElementById("cust_service");
+services.forEach(s => {
+    serviceBox.innerHTML += `<option value="${s.name}">${s.name} - ₹${s.price}</option>`;
+});
+
+// BOOKING
+document.getElementById("bookBtn").addEventListener("click", () => {
+    const name = document.getElementById("cust_name").value.trim();
+    const phone = document.getElementById("cust_phone").value.trim();
+    const salonId = salonBox.value;
+    const service = Array.from(serviceBox.selectedOptions).map(o => o.value);
+
+    const msgEl = document.getElementById("bookMsg");
+
+    if (!name) {
+        msgEl.innerText = "Enter your name!";
+        return;
+    }
+
+    const selectedSalon = salons.find(s => s.id === salonId);
+
+    let bookings = JSON.parse(localStorage.getItem("bookings") || "[]");
+
+    // FIX: Correct service duration calculation
+    const allServices = JSON.parse(localStorage.getItem("services") || "[]");
+    let timeRequired = 0;
+
+    service.forEach(svcName => {
+        const svc = allServices.find(x => x.name === svcName);
+        if (svc && svc.duration) {
+            timeRequired += Number(svc.duration) || 0;
+        } else {
+            timeRequired += 30;
+        }
+    });
+
+    const newBooking = {
+        id: "bk_" + Date.now(),
+        name: name,
+        phone: phone || "N/A",
+        salonId: salonId,
+        services: service,
+        date: new Date().toLocaleDateString(),
+        time: new Date().toLocaleTimeString(),
+        timeRequired: timeRequired
+    };
+
+    bookings.push(newBooking);
+    localStorage.setItem("bookings", JSON.stringify(bookings));
+
+    msgEl.innerText = "Booking successful!";
+});
+
+
+</script>
+<script src="customer.js"></script>
+
+</body>
+</html>

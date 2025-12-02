@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Header</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="header.css" /> <!-- NEW -->
+</head>
+
+<body>
+
+    <div class="topbar-title">
+      <span style="color: yellow; font-size: 20px; font-weight: 600;">
+        Book Your Saloon, Save Your Time
+      </span>
+
+    </div>
+    <div class="sb-header">
+      <div class="sb-menu-icon" onclick="openSidebar()">☰</div>
+      <span class="toggle-dark" onclick="toggleDarkMode()" style="color: aliceblue;">
+        Light🔆/Dark🌓 
+      </span>
+    </div>
+
+
+<!-- SIDEBAR -->
+<div id="sbSidebar" class="sb-sidebar">
+
+  <div class="sb-close" onclick="closeSidebar()">✖</div>
+
+  <!-- VERTICAL MENU (EXACT SAME DROPDOWN OPTIONS AS OLD HEADER) -->
+  <ul class="sb-menu">
+
+    <li class="sb-dropdown">
+      <span>Home ▼</span>
+      <ul class="sb-dropdown-items">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="offers.html">Offers</a></li>
+      </ul>
+    </li>
+
+    <li class="sb-dropdown">
+      <span>Customer Booking ▼</span>
+      <ul class="sb-dropdown-items">
+        <li><a href="customer.html">Book Your Slot</a></li>
+        <li><a href="history.html">Appointments</a></li>
+      </ul>
+    </li>
+
+    <li class="sb-dropdown">
+      <span>Login / Signup ▼</span>
+      <ul class="sb-dropdown-items">
+        <li><a href="admin-login.html">Admin Login</a></li>
+        <li><a href="signin.html">Already registered Salon</a></li>
+        <li><a href="signup.html">Create New Salon Account</a></li>
+      </ul>
+    </li>
+
+    <li class="sb-dropdown">
+      <span>Services ▼</span>
+      <ul class="sb-dropdown-items">
+        <li><a href="services.html">All Services</a></li>
+        <li>Haircut</li>
+        <li>Beard Trim</li>
+        <li>Hair Color</li>
+        <li>Head Massage</li>
+        <li>Facial Threading</li>
+      </ul>
+    </li>
+
+    <li class="sb-dropdown">
+      <span>About ▼</span>
+      <ul class="sb-dropdown-items">
+        <li><a href="about.html">About Us</a></li>
+      </ul>
+    </li>
+
+  </ul>
+</div>
+</body>
+</html>
