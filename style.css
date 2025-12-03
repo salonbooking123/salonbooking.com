@@ -511,3 +511,6 @@ label select {
   color: #fff;
   text-decoration: none;
 }
+#stick{
+  position:stick;
+}
