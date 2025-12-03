@@ -512,7 +512,8 @@ label select {
   text-decoration: none;
 }
 #stick{
-  position:static;
+  position:sticky;
 }
+
 
 
