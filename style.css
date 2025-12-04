@@ -1,4 +1,3 @@
-/* White clean minimal theme */
 :root{--bg:#ffffff;--card:#ffffff;--muted:#6b7280;--accent:#0b5ed7;--danger:#d9534f;--text:#0f1724}
 *{box-sizing:border-box}
 body{font-family:Inter,system-ui,Segoe UI,Roboto,Arial;margin:0;background:#f3f4f6;color:var(--text)}
@@ -24,16 +23,6 @@ small.muted{color:var(--muted)}
 @media(max-width:700px){.container-row{padding:0 12px}}
 #btn1{
   background-color: #c91f10;
-}
-
-.topbar {
-  width: 100%;
-  background: #09020a;
-  color: #070408;
-  padding: 12px 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 }
 .nav {
   display: flex;
@@ -104,13 +93,6 @@ small.muted{color:var(--muted)}
   padding: 12px 0;
 }
 
-.topbar-title h1 {
-  color: #ffd700;
-  font-size: 26px;
-  margin: 0;
-  font-weight: 700;
-  letter-spacing: 1px;
-}
 .about-content {
     max-width: 900px;
     justify-content: center;
@@ -127,7 +109,8 @@ small.muted{color:var(--muted)}
 
 .about-text {
     font-size: 18px;
-    color: #333;
+    color: #07b94e;
+    /* color: aliceblue; */
     margin-bottom: 30px;
     line-height: 1.6;
 }
@@ -511,9 +494,3 @@ label select {
   color: #fff;
   text-decoration: none;
 }
-#stick{
-  position:sticky;
-}
-
-
-
